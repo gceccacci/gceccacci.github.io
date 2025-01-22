@@ -55,13 +55,13 @@ document.addEventListener('DOMContentLoaded', () => {
         ]
     };
 
+    // Handle the "See More" button click to display popup content
     seeMoreButtons.forEach(button => {
         button.addEventListener('click', () => {
             const projectId = button.getAttribute('data-project');
             const details = projectDetails[projectId];
 
             popupScrollableContent.innerHTML = '';
-
 
             if (details) {
                 details.forEach((item, index) => {
@@ -77,30 +77,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 popupScrollableContent.innerHTML = '<p>No details available.</p>';
             }
 
-         
             popup.classList.remove('hidden');
         });
     });
 
+    // Close the popup when clicking the "X" button
     closePopup.addEventListener('click', () => {
         popup.classList.add('hidden');
     });
 
+    // Close the popup when clicking outside the popup content
     window.addEventListener('click', (event) => {
         if (event.target === popup) {
             popup.classList.add('hidden');
         }
     });
 
-    closePopup.addEventListener('click', () => {
-        popup.classList.add('hidden');
+    // Prevent the popup from closing when clicking inside its content
+    popupScrollableContent.addEventListener('click', (event) => {
+        event.stopPropagation();
     });
 
-    window.addEventListener('click', (event) => {
-        if (event.target === popup) {
-            popup.classList.add('hidden');
-        }
-    });
+    
     const toggleButton = document.getElementById("toggle-about");
     const fullText = document.getElementById("about-full");
     const snippetText = document.getElementById("about-snippet");
@@ -110,6 +108,22 @@ document.addEventListener('DOMContentLoaded', () => {
       fullText.classList.toggle("hidden");
       snippetText.classList.toggle("hidden");
       toggleButton.textContent = isExpanded ? "See More ▼" : "See More ▲";
+    });
+    let lastScrollY = window.scrollY;
+    const headerContainer = document.querySelector('.header-container');
+
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+
+        if (currentScrollY > lastScrollY) {
+            // Scrolling down - hide the header
+            headerContainer.classList.add('hidden-header');
+        } else {
+            // Scrolling up - show the header
+            headerContainer.classList.remove('hidden-header');
+        }
+
+        lastScrollY = currentScrollY;
     });
     
 });

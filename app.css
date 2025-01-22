@@ -1,8 +1,24 @@
-.header-container {
+
+.header-container{
+    position: fixed; /* Keeps the header fixed to the viewport */
+    top: 0;          /* Aligns it to the top of the screen */
+    left: 0;         /* Ensures it starts at the left edge */
+    width: 100%;     /* Spans the full width of the screen */
+    z-index: 1000;   /* Keeps it above other elements */
+    background-color: rgba(0, 0, 0, 0.9); /* Semi-transparent dark background */
+    color: rgb(155, 0, 0);    /* White text for better visibility */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Adds a subtle shadow for depth */
+    padding: 10px 20px; /* Adds space inside the header */
+    box-sizing: border-box; /* Ensures padding is included in the width */
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
-    
+    transform: translateY(0); /* Default position (visible) */
+    transition: transform 0.3s ease;
+}
+
+.hidden-header {
+    transform: translateY(-100%); /* Hides the header by moving it up */
 }
 
 .logo {
@@ -47,6 +63,9 @@
     transform: scale(1.1); 
 }
 
+section {
+    padding-top: 20px; /* Match or exceed header height */
+}
 
 body, h1, a {
     margin: 0;
