@@ -446,4 +446,11 @@ footer {
     }
 }
 
+@supports (-webkit-touch-callout: none) {
+    #animation {
+        background-attachment: scroll; 
+    }
+}
+
+
 
