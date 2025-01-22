@@ -374,6 +374,12 @@ transform: rotate(180deg);
         justify-content: flex-start;
         overflow-y: auto; 
     }
+    .popup-scrollable .popup-item img {
+        max-width: 180px; 
+        height: auto;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
 }
 
 @media (max-width: 480px) {
@@ -382,6 +388,12 @@ transform: rotate(180deg);
         height: 90%; 
         padding: 10px;
         border-radius: 5px; 
+    }
+    .popup-scrollable .popup-item img {
+        max-width: 120px; 
+        height: auto;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     }
 }
 
@@ -397,16 +409,19 @@ footer {
     padding: 1rem 0;
 }
 
-
 #animation {
     position: relative;
-    min-height: 500px; 
+    min-height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #282828; 
-    overflow: hidden;
+    background-color: #282828;
+    background-size: cover; 
+    background-attachment: fixed; 
+    background-position: center; 
+    overflow: hidden; 
 }
+
 
 .animation-container {
     position: relative;
