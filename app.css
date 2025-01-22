@@ -442,7 +442,8 @@ footer {
     #animation {
         background-size: contain; 
         background-attachment: scroll; 
-        background-position: center top; 
+        background-position: center top;
+        max-width: 768px; 
     }
 }
 
